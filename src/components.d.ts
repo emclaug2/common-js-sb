@@ -5,26 +5,31 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { CompOption } from "./components/my-component/my-component";
 export namespace Components {
     interface MyComponent {
         /**
-          * The first name
+          * If true, the button is displayed as disabled
          */
-        "first": string;
+        "disabled": boolean;
         /**
-          * The last name
+          * The text which is shown as label
          */
-        "last": string;
+        "label": string;
         /**
-          * The middle name
+          * Is needed to reference the form data after the form is submitted
          */
-        "middle": string;
+        "name": string;
+        /**
+          * Define the available options in the drop-down list
+         */
+        "options": CompOption[];
     }
-    interface PxbScorecard {
+    interface PxbScoreCard {
         /**
-          * The first name
+          * class overrides
          */
-        "firstProp": string;
+        "styles": string;
     }
 }
 declare global {
@@ -34,41 +39,45 @@ declare global {
         prototype: HTMLMyComponentElement;
         new (): HTMLMyComponentElement;
     };
-    interface HTMLPxbScorecardElement extends Components.PxbScorecard, HTMLStencilElement {
+    interface HTMLPxbScoreCardElement extends Components.PxbScoreCard, HTMLStencilElement {
     }
-    var HTMLPxbScorecardElement: {
-        prototype: HTMLPxbScorecardElement;
-        new (): HTMLPxbScorecardElement;
+    var HTMLPxbScoreCardElement: {
+        prototype: HTMLPxbScoreCardElement;
+        new (): HTMLPxbScoreCardElement;
     };
     interface HTMLElementTagNameMap {
         "my-component": HTMLMyComponentElement;
-        "pxb-scorecard": HTMLPxbScorecardElement;
+        "pxb-score-card": HTMLPxbScoreCardElement;
     }
 }
 declare namespace LocalJSX {
     interface MyComponent {
         /**
-          * The first name
+          * If true, the button is displayed as disabled
          */
-        "first"?: string;
+        "disabled"?: boolean;
         /**
-          * The last name
+          * The text which is shown as label
          */
-        "last"?: string;
+        "label"?: string;
         /**
-          * The middle name
+          * Is needed to reference the form data after the form is submitted
          */
-        "middle"?: string;
+        "name"?: string;
+        /**
+          * Define the available options in the drop-down list
+         */
+        "options"?: CompOption[];
     }
-    interface PxbScorecard {
+    interface PxbScoreCard {
         /**
-          * The first name
+          * class overrides
          */
-        "firstProp"?: string;
+        "styles"?: string;
     }
     interface IntrinsicElements {
         "my-component": MyComponent;
-        "pxb-scorecard": PxbScorecard;
+        "pxb-score-card": PxbScoreCard;
     }
 }
 export { LocalJSX as JSX };
@@ -76,7 +85,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "my-component": LocalJSX.MyComponent & JSXBase.HTMLAttributes<HTMLMyComponentElement>;
-            "pxb-scorecard": LocalJSX.PxbScorecard & JSXBase.HTMLAttributes<HTMLPxbScorecardElement>;
+            "pxb-score-card": LocalJSX.PxbScoreCard & JSXBase.HTMLAttributes<HTMLPxbScoreCardElement>;
         }
     }
 }

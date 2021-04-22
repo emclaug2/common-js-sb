@@ -1,0 +1,21 @@
+.pxb-container {
+  border: solid 1px gray;
+  border-radius: 8px;
+}
+.pxb-header {
+  background: #003bb8;
+  color: white;
+  padding: 16px;
+  background-position: 50%;
+  background-size: cover;
+}
+.pxb-title {
+  font-size: 32px;
+}
+.pxb-subtitle, .pxb-info {
+  font-size: 16px;
+}
+.pxb-body {
+  padding: 16px;
+  background: white;
+}
