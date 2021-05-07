@@ -21,7 +21,7 @@
     "test-stencil": "stencil test --spec --e2e",
     "test-stencil.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "start-storybook": "start-storybook -p 6006 -s dist --no-manager-cache",
+    "start-storybook": "start-storybook -p 6006 -s dist",
     "prebuild-storybook": "npm run build-stencil",
     "build-storybook": "build-storybook -o ./distStorybook",
     "predeploy-storybook": "npm run build-storybook",
@@ -29,6 +29,9 @@
     "clean": "rimraf dist && rimraf distStorybook"
   },
   "dependencies": {
+    "@material-ui/core": "^4.11.4",
+    "@material-ui/icons": "^4.11.2",
+    "@pxblue/react-components": "^5.1.1",
     "@stencil/core": "^2.5.2",
     "clsx": "^1.1.1"
   },

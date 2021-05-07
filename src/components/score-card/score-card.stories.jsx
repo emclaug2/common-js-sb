@@ -1,5 +1,9 @@
 import React from 'react';
-import ScoreCard from '../../../dist/collection/components/score-card/score-card';
+import {List} from '@material-ui/core';
+import { Cloud, ListAlt, MoreVert, Notifications } from '@material-ui/icons';
+import {InfoListItem} from '@pxblue/react-components';
+import {ScoreCard} from "./score-card";
+
 const backgroundImage = require('../../assets/topology_40.png');
 
 const title = { type: 'slot', description: '1st line header text' };
@@ -30,7 +34,7 @@ const withBasicConfigTemplate = (args) => (
 export const Default = withBasicConfigTemplate.bind({});
 Default.args = { ...defaultArgs, title: 'Score Card Title' };
 Default.storyName = 'with basic config';
-Default.argTypes = { title, body };
+Default.argTypes = { title };
 
 const WithCustomHeaderTemplate = (args) => (
   <pxb-score-card styles={args.styles}>
@@ -56,3 +60,48 @@ WithCustomHeader.args = {
 };
 WithCustomHeader.storyName = 'with custom header';
 WithCustomHeader.argTypes = {  title, subtitle, info, body, styles };
+
+const WithCustomBodyTemplate = (args) => (
+  <pxb-score-card styles={args.styles}>
+    <div slot="pxb-title">{args.title}</div>
+    <div slot="pxb-subtitle">{args.subtitle}</div>
+    <div slot="pxb-info">{args.info}</div>
+    <div slot="pxb-body">
+      <List style={{ padding: '.5rem 0' }}>
+        <InfoListItem
+          dense
+          style={{ height: '2.25rem' }}
+          title={'0 Alarms'}
+          icon={<Notifications color={'inherit'} />}
+        />
+        <InfoListItem
+          dense
+          style={{ height: '2.25rem' }}
+          title={'1 Event'}
+          icon={<ListAlt color={'inherit'} />}
+        />
+        <InfoListItem
+          dense
+          chevron={true}
+          style={{ height: '2.25rem' }}
+          title={'Online'}
+          icon={<Cloud color={'inherit'} />}
+        />
+      </List>
+    </div>
+  </pxb-score-card>
+);
+export const WithCustomBody = WithCustomBodyTemplate.bind({});
+WithCustomBody.args = {
+  title: 'Score Card Title',
+  subtitle: 'Score Card Subtitle',
+  info: 'Score Card Info',
+  styles:
+    `{
+      "header": {
+        "background-image": "url(${backgroundImage})"
+      }
+    }`
+};
+WithCustomBody.storyName = 'with custom body';
+WithCustomBody.argTypes = {  title, subtitle, info, body, styles };
